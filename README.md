@@ -2,10 +2,10 @@
 
 ## Functional Requirements
 
- - [] The backend application should be communicate with frontend
- - [] The backend application should be fetch data from [OMDBAPI](http://www.omdbapi.com/)
- - [] The backend application should be return a DTO to frontend
- - [] The frontend application should be show the data fetched by the wireframe's project
+ - [ ] The backend application should be communicate with frontend
+ - [ ] The backend application should be fetch data from [OMDBAPI](http://www.omdbapi.com/)
+ - [ ] The backend application should be return a DTO to frontend
+ - [ ] The frontend application should be show the data fetched by the wireframe's project
 
 ## Non-functional Requirements
 
