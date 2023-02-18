@@ -1,7 +1,7 @@
-import { ShellBar, StandardListItem, Avatar, Input, Icon, FlexBox, Title, Card, Loader, CardHeader } from "@ui5/webcomponents-react"
+import { ShellBar, Input, Icon, FlexBox, Title } from "@ui5/webcomponents-react"
 import { useEffect, useState } from "react"
-import { IMovie, IMovieRequest } from "../../interfaces/Movie"
-import CardListComponent from "./CardList"
+import { IMovieRequest } from "../../interfaces/Movie"
+import MoviePosterComponent from "../../utils/Poster"
 import { fetchMovies } from "./functions"
 
 
@@ -37,8 +37,8 @@ const HomeComponent = () => {
         >
 
                 {
-                    moviesList.data?.map((movie) => {
-                        return <CardListComponent data={movie} />
+                    moviesList.data?.map((movie, index) => {
+                        return <MoviePosterComponent data={movie} key={index} linkTo={`${movie.type}/${movie.id}/details`} />
                     })
                 }
         </FlexBox>
