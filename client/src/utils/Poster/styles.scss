@@ -1,6 +1,10 @@
 .movie-card {
     width: 20vw;
     height: 30vw;
+
+    min-width: 270px;
+    min-height: 390px;
+
     margin: 1vw;
 
     cursor: pointer;
