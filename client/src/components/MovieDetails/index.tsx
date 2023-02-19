@@ -1,8 +1,9 @@
 import { Button } from "@ui5/webcomponents-react"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { IMovieDetailsResponse } from "../../interfaces/Movie"
 import MoviePosterComponent from "../../utils/Poster"
+import StarRatingComponent from "../../utils/StarRating"
 import movieDetailsFunctions from "./functions"
 
 const MovieDetailsComponent = () => {
@@ -18,6 +19,9 @@ const MovieDetailsComponent = () => {
 
     return (
         <>
+            <div className="movie-details-breadcrumb">
+                <Link to={'/'} ><span>Voltar</span></Link>
+            </div>
             <div className="movie-details-container">
                 <div className="movie-details-left-container">
                     <h2>{infos.title}</h2>
@@ -28,16 +32,17 @@ const MovieDetailsComponent = () => {
                     </div>
                     <div className="movie-details-review">
 
-                    <strong>Review</strong>
+                    <strong>Review: </strong>
+                    <StarRatingComponent rating={infos.rating}/>
                     </div>
                     <Button className="movie-details-favorite-button">
                         Favorite
                     </Button>
                 </div>
-                <div className="movie-details-right-container">
+                
                     {/* Movie Poster Component */}
                     <MoviePosterComponent data={infos} />
-                </div>
+                
             </div>
         </>
     )
