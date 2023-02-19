@@ -6,6 +6,14 @@
     flex-wrap: wrap;
 }
 
+.movie-details-breadcrumb {
+    margin: 2.5vw;
+    span {
+        text-decoration: underline;
+        color: #354a5f
+    }
+}
+
 .movie-details-left-container {
 
     display: flex;
@@ -30,6 +38,10 @@
     strong {
         font-size: clamp(1rem, 3vw, 1.5rem);
     }
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .movie-details-favorite-button {
@@ -37,7 +49,4 @@
     min-width: 100px;
 
     align-self: center;
-}
-.movie-details-right-container {
-
 }
