@@ -14,8 +14,8 @@ export default class MoviePresenter {
 
     static toHttpListResponse(movies : Movie[]) {
         return {
-            amount : movies.length,
-            data : movies.map(this.toHttpResponse)
+            amount : movies?.length,
+            data : movies?.map(this.toHttpResponse)
         }
     }
 

@@ -1,0 +1,43 @@
+.movie-details-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.movie-details-left-container {
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 50%;
+
+    gap:1.5rem;
+
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    p {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    
+}
+
+.movie-details-actors, .movie-details-review {
+    strong {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+}
+
+.movie-details-favorite-button {
+    max-width: 8vw;
+    min-width: 100px;
+
+    align-self: center;
+}
+.movie-details-right-container {
+
+}
