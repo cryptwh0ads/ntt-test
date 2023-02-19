@@ -1,8 +1,8 @@
-import { ShellBar, Input, Icon, FlexBox, Title } from "@ui5/webcomponents-react"
+import { FlexBox, Title } from "@ui5/webcomponents-react"
 import { useEffect, useState } from "react"
 import { IMovieRequest } from "../../interfaces/Movie"
 import MoviePosterComponent from "../../utils/Poster"
-import { fetchMovies } from "./functions"
+import homeFunctions from "./functions"
 
 
 
@@ -11,21 +11,11 @@ const HomeComponent = () => {
     const [moviesList, setMoviesList] = useState<IMovieRequest>(Object)
 
     useEffect(() => {
-        fetchMovies().then(response => setMoviesList(response))
+        homeFunctions.fetchMovies().then(response => setMoviesList(response))
     },[])
 
     return (<>
-        <ShellBar
-            primaryTitle="Movie Scraper"
-            searchField={
-                <Input 
-                    icon={
-                        <Icon interactive name="search"/>
-                    } 
-                    showClearIcon 
-                />
-            }
-        />
+        
         <div className="home-page-title-container">
             <Title> Suggested Movie List</Title>
         </div>
@@ -38,7 +28,11 @@ const HomeComponent = () => {
 
                 {
                     moviesList.data?.map((movie, index) => {
-                        return <MoviePosterComponent data={movie} key={index} linkTo={`${movie.type}/${movie.id}/details`} />
+                        return <MoviePosterComponent 
+                                    data={movie}
+                                    key={index}
+                                    linkTo={`${movie.type}/${movie.id}/details`}
+                                    withHeader />
                     })
                 }
         </FlexBox>

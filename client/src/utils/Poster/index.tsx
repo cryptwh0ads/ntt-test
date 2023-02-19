@@ -5,17 +5,20 @@ import { IMovie } from "../../interfaces/Movie"
 interface CardProps {
     data: IMovie
     linkTo ?: string
+    withHeader ?: boolean
 }
 
 
-const MoviePosterComponent: React.FC<CardProps> = ({data, linkTo}) => {
+const MoviePosterComponent: React.FC<CardProps> = ({data, linkTo, withHeader}) => {
     return linkTo ? (
         <Link to={linkTo}>
         <Card 
             header={
+                withHeader ?
                 <CardHeader
                     titleText={data.title}
                     />
+                    : null
                 }
             className="movie-card"
             
@@ -26,9 +29,11 @@ const MoviePosterComponent: React.FC<CardProps> = ({data, linkTo}) => {
     ) : (
         <Card 
             header={
+                withHeader ?
                 <CardHeader
                     titleText={data.title}
                     />
+                    : null
                 }
             className="movie-card"
             

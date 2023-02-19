@@ -1,5 +1,5 @@
 import { api } from "."
-import { IMovieRequest } from "../interfaces/Movie"
+import { IMovieDetailsResponse, IMovieRequest } from "../interfaces/Movie"
 
 // some suggested movie titles
 const movieTitles: Array<string> = [
@@ -7,15 +7,25 @@ const movieTitles: Array<string> = [
     'hack',
     'action',
     'developer',
-    'programing'
+    'programming'
 ]
 
 const getRandomMoviesList = async (): Promise<IMovieRequest> => {
     return await (await api.get(`/v1/movies/${movieTitles[Math.floor(Math.random()*movieTitles.length)]}`)).data
 }
 
+const getMovieDetails = async (id: string): Promise<IMovieDetailsResponse> => {
+    return await (await api.get(`/v1/movies/details/${id}`)).data
+}
+
+const searchMoviesByTitle = async (title: string) : Promise<IMovieRequest> => {
+    return await (await api.get(`/v1/movies/${title}`)).data
+}
+
 const movieService = {
-    getRandomMoviesList
+    getRandomMoviesList,
+    getMovieDetails,
+    searchMoviesByTitle
 }
 
 export default movieService 
