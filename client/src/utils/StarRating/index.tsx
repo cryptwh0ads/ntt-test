@@ -1,8 +1,8 @@
 interface StarRatingProps {
-    rating: number
+    rating: number | undefined
 } 
 
-const StarRatingComponent: React.FC<StarRatingProps> = ({rating}) => {
+const StarRatingComponent: React.FC<StarRatingProps> = ({rating = 0}) => {
 
     const stars = 5
     const starsGrade = 10

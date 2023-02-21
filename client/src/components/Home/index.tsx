@@ -1,23 +1,40 @@
-import { FlexBox, Title } from "@ui5/webcomponents-react"
+import { FlexBox, Icon, Input, Title } from "@ui5/webcomponents-react"
 import { useEffect, useState } from "react"
-import { IMovieRequest } from "../../interfaces/Movie"
+import { useDispatch } from "react-redux"
+import { getRandomMoviesList } from "../../store/actionCreators/get-random-movies"
+import { searchMoviesByTitle } from "../../store/actionCreators/search-movies"
+import { useTypedSelector } from "../../useTypeSelector"
 import MoviePosterComponent from "../../utils/Poster"
-import homeFunctions from "./functions"
 
 
 
 const HomeComponent = () => {
 
-    const [moviesList, setMoviesList] = useState<IMovieRequest>(Object)
+    const dispatch = useDispatch()
+    const { movies, loading, error } = useTypedSelector((state) => state.movie);
+    const [searchValue, setSearchValue] = useState<string | undefined>('')
 
     useEffect(() => {
-        homeFunctions.fetchMovies().then(response => setMoviesList(response))
-    },[])
+        // @ts-ignore
+        dispatch(getRandomMoviesList())
+    }, [])
 
     return (<>
         
         <div className="home-page-title-container">
-            <Title> Suggested Movie List</Title>
+            <Input 
+                    icon={
+                        <Icon interactive name="search"/>
+                    } 
+                    showClearIcon
+                    onBlur={() => {
+                        //@ts-ignore
+                        dispatch(searchMoviesByTitle(searchValue))
+                        
+                    }} 
+                    defaultValue={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                />
         </div>
 
         <FlexBox
@@ -27,7 +44,7 @@ const HomeComponent = () => {
         >
 
                 {
-                    moviesList.data?.map((movie, index) => {
+                    movies && movies.map((movie, index) => {
                         return <MoviePosterComponent 
                                     data={movie}
                                     key={index}
