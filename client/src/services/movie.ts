@@ -10,7 +10,7 @@ const movieTitles: Array<string> = [
     'programming'
 ]
 
-const getRandomMoviesList = async (): Promise<IMovieRequest> => {
+const getRandomMoviesList = async (): Promise<IMovie[]> => {
     return await (await api.get(`/v1/movies/${movieTitles[Math.floor(Math.random()*movieTitles.length)]}`)).data
 }
 

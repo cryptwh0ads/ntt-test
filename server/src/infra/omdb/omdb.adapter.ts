@@ -3,9 +3,7 @@ import movie from "src/domain/entities/movie";
 
 export default class OMDbAdapterRepository implements MovieRepository{
 
-//http://www.omdbapi.com/?i=tt3896198&apikey=2e10e9ad
-
-    private baseURL = 'http://www.omdbapi.com/?apikey=2e10e9ad'
+    private baseURL = 'http://www.omdbapi.com/?apikey='
 
     async list(searchString: string): Promise<movie[]> {
         const response = await fetch(this.baseURL + `&s=${searchString}`)

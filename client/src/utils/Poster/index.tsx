@@ -3,7 +3,7 @@ import { Link, redirect } from "react-router-dom"
 import { IMovie } from "../../interfaces/Movie"
 
 interface CardProps {
-    data: IMovie
+    data: IMovie | undefined
     linkTo ?: string
     withHeader ?: boolean
 }
@@ -16,14 +16,14 @@ const MoviePosterComponent: React.FC<CardProps> = ({data, linkTo, withHeader}) =
             header={
                 withHeader ?
                 <CardHeader
-                    titleText={data.title}
+                    titleText={data?.title}
                     />
                     : null
                 }
             className="movie-card"
             
         >
-            <img src={data.poster} alt={data.title} className="movie-card-poster" />
+            <img src={data?.poster} alt={data?.title} className="movie-card-poster" />
         </Card>
         </Link>
     ) : (
@@ -31,14 +31,14 @@ const MoviePosterComponent: React.FC<CardProps> = ({data, linkTo, withHeader}) =
             header={
                 withHeader ?
                 <CardHeader
-                    titleText={data.title}
+                    titleText={data?.title}
                     />
                     : null
                 }
             className="movie-card"
             
         >
-            <img src={data.poster} alt={data.title} className="movie-card-poster" />
+            <img src={data?.poster} alt={data?.title} className="movie-card-poster" />
         </Card>
     )
 }
